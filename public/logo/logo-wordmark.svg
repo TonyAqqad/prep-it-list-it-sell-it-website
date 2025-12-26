@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" fill="none">
+  <!--
+    Prep It List It Sell It - Wordmark Logo
+    Zine-style stacked blocks with bold typography
+    Primary use: Header, Footer, Marketing
+  -->
+
+  <!-- PREP IT block - rotated -3deg -->
+  <g transform="rotate(-3, 45, 25)">
+    <rect x="5" y="10" width="85" height="32" fill="#16A34A"/>
+    <rect x="5" y="10" width="85" height="32" stroke="#0F172A" stroke-width="2" fill="none"/>
+    <!-- Shadow -->
+    <rect x="9" y="14" width="85" height="32" fill="#0F172A" opacity="0.3"/>
+    <text x="48" y="33"
+          font-family="system-ui, -apple-system, sans-serif"
+          font-weight="800"
+          font-size="16"
+          fill="#0F172A"
+          text-anchor="middle"
+          letter-spacing="0.5">PREP IT</text>
+  </g>
+
+  <!-- LIST IT block - rotated +2deg, offset right -->
+  <g transform="rotate(2, 145, 50)">
+    <rect x="95" y="35" width="80" height="32" fill="transparent" stroke="#16A34A" stroke-width="2"/>
+    <text x="135" y="58"
+          font-family="system-ui, -apple-system, sans-serif"
+          font-weight="800"
+          font-size="16"
+          fill="#16A34A"
+          text-anchor="middle"
+          letter-spacing="0.5">LIST IT</text>
+  </g>
+
+  <!-- SELL IT block - rotated -4deg -->
+  <g transform="rotate(-4, 230, 75)">
+    <rect x="180" y="55" width="80" height="32" fill="#16A34A"/>
+    <rect x="180" y="55" width="80" height="32" stroke="#0F172A" stroke-width="2" fill="none"/>
+    <!-- Shadow -->
+    <rect x="184" y="59" width="80" height="32" fill="#0F172A" opacity="0.3"/>
+    <text x="220" y="78"
+          font-family="system-ui, -apple-system, sans-serif"
+          font-weight="800"
+          font-size="16"
+          fill="#0F172A"
+          text-anchor="middle"
+          letter-spacing="0.5">SELL IT</text>
+  </g>
+
+  <!-- SERVICES text - small, right aligned -->
+  <text x="275" y="78"
+        font-family="system-ui, -apple-system, sans-serif"
+        font-weight="600"
+        font-size="10"
+        fill="#CBD5E1"
+        letter-spacing="2">SERVICES</text>
+
+  <!-- House Icon - geometric zine style -->
+  <g transform="translate(320, 20)">
+    <!-- House body -->
+    <g transform="rotate(-6, 35, 40)">
+      <rect x="15" y="35" width="40" height="35" fill="#16A34A"/>
+      <rect x="15" y="35" width="40" height="35" stroke="#0F172A" stroke-width="2" fill="none"/>
+      <!-- Roof -->
+      <polygon points="35,15 10,40 60,40" fill="#F59E0B"/>
+      <polygon points="35,15 10,40 60,40" stroke="#0F172A" stroke-width="2" fill="none"/>
+      <!-- Door -->
+      <rect x="28" y="50" width="14" height="20" fill="#0F172A"/>
+      <!-- Window -->
+      <rect x="40" y="42" width="10" height="10" fill="#0F172A"/>
+    </g>
+    <!-- Shadow layer -->
+    <g transform="rotate(-6, 35, 40) translate(4, 4)" opacity="0.2">
+      <rect x="15" y="35" width="40" height="35" fill="#0F172A"/>
+      <polygon points="35,15 10,40 60,40" fill="#0F172A"/>
+    </g>
+  </g>
+</svg>

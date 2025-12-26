@@ -1,0 +1,316 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Navy & Gold Color Tokens */
+    --color-navy: 27 40 56;
+    --color-navy-dark: 15 25 35;
+    --color-navy-light: 36 52 71;
+    --color-gold: 212 167 74;
+    --color-gold-light: 228 193 103;
+    --color-gold-dark: 184 137 58;
+
+    /* Semantic colors */
+    --color-primary: var(--color-navy);
+    --color-secondary: var(--color-gold);
+    --color-background: var(--color-navy);
+    --color-surface: var(--color-navy-light);
+
+    /* Design tokens */
+    --shadow-card: 0 4px 20px rgba(27, 40, 56, 0.12);
+    --shadow-elevated: 0 8px 40px rgba(27, 40, 56, 0.16);
+    --shadow-gold: 0 4px 20px rgba(212, 167, 74, 0.25);
+    --border-gold: 2px solid rgb(212, 167, 74);
+
+    /* Animation */
+    --transition-fast: 150ms;
+    --transition-base: 250ms;
+    --transition-slow: 350ms;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Safe area insets for iPhone notch/home indicator */
+  @supports (padding-bottom: env(safe-area-inset-bottom)) {
+    .safe-area-inset-bottom {
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+    .pb-safe {
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+  }
+
+  body {
+    @apply bg-navy font-body text-white overflow-x-hidden relative;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Custom selection */
+  ::selection {
+    @apply bg-gold text-navy;
+  }
+
+  /* Focus states - accessible and stylish */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-gold;
+  }
+
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  /* ============================================
+     CARD SYSTEM - Professional design component
+     ============================================ */
+  .card {
+    @apply bg-navy-light rounded-lg;
+    box-shadow: var(--shadow-card);
+    transition: transform var(--transition-base) ease,
+                box-shadow var(--transition-base) ease;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .card-gold {
+    @apply border-2 border-gold/30;
+  }
+
+  .card-gold:hover {
+    @apply border-gold/60;
+    box-shadow: var(--shadow-gold);
+  }
+
+  /* Gold accent border */
+  .gold-border {
+    @apply border-2 border-gold;
+  }
+
+  .gold-border-subtle {
+    @apply border border-gold/30;
+  }
+
+  /* Gold glow effect */
+  .gold-glow {
+    box-shadow: 0 0 30px rgba(212, 167, 74, 0.2);
+  }
+
+  /* Gradient backgrounds */
+  .gradient-navy {
+    @apply bg-gradient-to-br from-navy via-navy-dark to-navy;
+  }
+
+  .gradient-gold {
+    @apply bg-gradient-to-r from-gold-dark via-gold to-gold-light;
+  }
+
+  /* Subtle pattern overlay */
+  .pattern-overlay {
+    position: relative;
+  }
+
+  .pattern-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4A74A' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Tap target minimum size (44px) */
+  .tap-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+
+  /* Container with max width */
+  .container-section {
+    @apply mx-auto max-w-7xl px-4 md:px-6 lg:px-8;
+  }
+
+  /* Button base styles */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply font-semibold tracking-wide;
+    @apply tap-target px-6 py-3;
+    @apply rounded-lg;
+    @apply transition-all duration-250;
+  }
+
+  .btn:hover {
+    @apply -translate-y-0.5;
+  }
+
+  .btn:active {
+    @apply translate-y-0;
+  }
+
+  .btn-primary {
+    @apply bg-gold text-navy hover:bg-gold-light;
+    box-shadow: var(--shadow-gold);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 6px 25px rgba(212, 167, 74, 0.35);
+  }
+
+  .btn-secondary {
+    @apply bg-navy-light text-white border border-gold/30 hover:border-gold hover:bg-navy;
+  }
+
+  .btn-outline {
+    @apply bg-transparent text-white border-2 border-white/30 hover:border-gold hover:text-gold;
+  }
+
+  .btn-gold-outline {
+    @apply bg-transparent text-gold border-2 border-gold hover:bg-gold hover:text-navy;
+  }
+
+  /* Badge styles */
+  .badge {
+    @apply inline-flex items-center px-3 py-1;
+    @apply text-xs font-semibold uppercase tracking-wider;
+    @apply rounded-full;
+  }
+
+  .badge-gold {
+    @apply bg-gold/10 text-gold border border-gold/30;
+  }
+
+  .badge-navy {
+    @apply bg-navy-light text-white border border-white/10;
+  }
+
+  /* Service card specific */
+  .service-card {
+    @apply bg-white rounded-xl p-6 text-navy;
+    box-shadow: var(--shadow-card);
+    transition: transform var(--transition-base) ease,
+                box-shadow var(--transition-base) ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-elevated);
+  }
+
+  /* Icon container */
+  .icon-container {
+    @apply w-14 h-14 rounded-xl flex items-center justify-center;
+    @apply bg-gold/10 text-gold;
+  }
+
+  /* Section heading */
+  .section-heading {
+    @apply text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white;
+  }
+
+  .section-subheading {
+    @apply text-lg text-white/70 max-w-2xl;
+  }
+
+  /* Gold text */
+  .text-gold-gradient {
+    @apply bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-gold-dark via-gold to-gold-light;
+  }
+
+  /* Divider */
+  .divider-gold {
+    @apply w-20 h-1 bg-gold rounded-full;
+  }
+
+  /* Process step number */
+  .step-number {
+    @apply w-12 h-12 rounded-full flex items-center justify-center;
+    @apply bg-gold text-navy font-bold text-xl;
+    box-shadow: var(--shadow-gold);
+  }
+
+  /* Form styles */
+  .form-input {
+    @apply w-full px-4 py-3 rounded-lg;
+    @apply bg-white/5 border border-white/10;
+    @apply text-white placeholder-white/40;
+    @apply focus:border-gold focus:ring-1 focus:ring-gold;
+    @apply transition-colors duration-200;
+  }
+
+  .form-label {
+    @apply block text-sm font-medium text-white/80 mb-2;
+  }
+}
+
+@layer utilities {
+  /* Text balance */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Hide scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Backdrop blur with fallback */
+  .backdrop-blur-safe {
+    @apply backdrop-blur-md;
+    @supports not (backdrop-filter: blur(12px)) {
+      background-color: rgba(27, 40, 56, 0.95);
+    }
+  }
+
+  /* Animation delays */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+  .delay-600 { animation-delay: 600ms; }
+  .delay-700 { animation-delay: 700ms; }
+  .delay-800 { animation-delay: 800ms; }
+
+  /* Duration utility */
+  .duration-250 {
+    transition-duration: 250ms;
+  }
+}
+
+/* Smooth scroll anchor offset for fixed header */
+html {
+  scroll-padding-top: 100px;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
