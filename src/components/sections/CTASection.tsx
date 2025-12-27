@@ -20,6 +20,7 @@ export function CTASection({
           {/* Phone Card */}
           <a
             href={`tel:${company.contact.phone.officeRaw}`}
+            aria-label={`Call Bryan Now at ${company.contact.phone.office}`}
             className="card card-gold p-lg flex items-center gap-md hover:scale-105 transition-transform"
           >
             <div className="icon-container">
@@ -34,6 +35,7 @@ export function CTASection({
           {/* Email Card */}
           <a
             href={`mailto:${company.contact.email}`}
+            aria-label={`Email us at ${company.contact.email}`}
             className="card card-gold p-lg flex items-center gap-md hover:scale-105 transition-transform"
           >
             <div className="icon-container">
