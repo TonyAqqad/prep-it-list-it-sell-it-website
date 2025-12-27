@@ -209,7 +209,10 @@ export default function GetQuotePage() {
             {[
               {
                 icon: "verified",
-                title: "Licensed & Insured",
+                title:
+                  company.credentials.licensed && company.credentials.insured
+                    ? "Licensed & Insured"
+                    : "Professional Service",
                 description:
                   "Peace of mind knowing your project is protected and handled by professionals.",
               },
