@@ -153,8 +153,8 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
           {/* Features Grid */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            {service.features.map((feature, idx) => (
-              <Card key={idx} variant="light" padding="lg" className="text-center">
+            {service.features.map((feature) => (
+              <Card key={feature} variant="light" padding="lg" className="text-center">
                 <div className="flex justify-center mb-4">
                   <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center">
                     <Icon name="check_circle" size="md" className="text-gold" filled />
@@ -196,16 +196,15 @@ export default async function ServicePage({ params }: ServicePageProps) {
                     icon: "handshake",
                     text: "Single point of contact - work with Bryan directly",
                   },
-                  {
-                    icon: "verified_user",
-                    text: "Licensed and fully insured",
-                  },
+                  ...(company.credentials.licensed && company.credentials.insured
+                    ? [{ icon: "verified_user", text: "Licensed and fully insured" }]
+                    : []),
                   {
                     icon: "location_on",
-                    text: "Local to Santa Clarita Valley",
+                    text: `Local to ${company.serviceAreas.find((a) => a.primary)?.name || "Santa Clarita Valley"}`,
                   },
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-4">
+                ].map((item) => (
+                  <div key={item.icon} className="flex items-center gap-4">
                     <div className="w-10 h-10 rounded-lg bg-gold/10 flex items-center justify-center flex-shrink-0">
                       <Icon name={item.icon} className="text-gold" />
                     </div>

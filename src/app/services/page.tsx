@@ -126,9 +126,9 @@ export default function ServicesPage() {
 
                     {/* Features preview */}
                     <ul className="space-y-1.5 mb-4">
-                      {service.features.slice(0, 3).map((feature, idx) => (
+                      {service.features.slice(0, 3).map((feature) => (
                         <li
-                          key={idx}
+                          key={feature}
                           className="flex items-center gap-2 text-sm text-navy/70"
                         >
                           <Icon
@@ -188,10 +188,10 @@ export default function ServicesPage() {
                 icon: "schedule",
                 title: "Fast Turnaround",
                 description:
-                  "We understand selling timelines. Work typically begins within 3 days.",
+                  "We understand selling timelines. Quick response, efficient work.",
               },
-            ].map((item, idx) => (
-              <div key={idx} className="text-center">
+            ].map((item) => (
+              <div key={item.icon} className="text-center">
                 <div className="flex justify-center mb-4">
                   <div className="w-16 h-16 rounded-2xl bg-gold/10 border border-gold/30 flex items-center justify-center">
                     <Icon name={item.icon} size="lg" className="text-gold" />
@@ -212,7 +212,7 @@ export default function ServicesPage() {
       {/* CTA Section */}
       <CTASection
         heading="Ready to Get Your Home Market-Ready?"
-        subheading="Get a free consultation and estimate. We respond within 1-24 hours."
+        subheading={`Get a free consultation and estimate. We respond within ${company.contact.responseTime}.`}
       />
     </div>
   );
