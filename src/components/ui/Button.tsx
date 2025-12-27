@@ -37,9 +37,9 @@ export function Button({
   disabled = false,
   type = "button",
 }: ButtonProps) {
-  const classes = `btn ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
+  const classes = `btn ${variantClasses[variant]} ${sizeClasses[size]} ${disabled ? "opacity-50 cursor-not-allowed" : ""} ${className}`;
 
-  if (href) {
+  if (href && !disabled) {
     return (
       <Link href={href} className={classes}>
         {children}

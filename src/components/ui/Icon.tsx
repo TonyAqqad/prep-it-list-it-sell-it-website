@@ -21,6 +21,7 @@ export function Icon({
     <span
       className={`material-symbols-outlined ${sizeClasses[size]} ${className}`}
       style={{ fontVariationSettings: filled ? "'FILL' 1" : "'FILL' 0" }}
+      aria-hidden="true"
     >
       {name}
     </span>

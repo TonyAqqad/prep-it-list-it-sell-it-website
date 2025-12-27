@@ -29,7 +29,7 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
       <nav aria-label="Breadcrumb" className="py-md">
         <ol className="flex items-center gap-2 text-small text-white/60">
           {items.map((item, index) => (
-            <li key={index} className="flex items-center gap-2">
+            <li key={item.href || item.label} className="flex items-center gap-2">
               {index > 0 && (
                 <span className="material-symbols-outlined text-gold/50" style={{ fontSize: '16px' }}>
                   chevron_right
