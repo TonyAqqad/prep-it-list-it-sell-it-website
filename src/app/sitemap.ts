@@ -1,4 +1,5 @@
 import { MetadataRoute } from "next";
+import { services } from "@/content/services";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://prepitlistitsellit.com";
@@ -14,17 +15,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/for-agents`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.6 },
   ];
 
-  const servicePages = [
-    "kitchen-bath",
-    "painting",
-    "flooring",
-    "handyman",
-    "curb-appeal",
-    "cleaning",
-    "decluttering",
-    "staging",
-  ].map((slug) => ({
-    url: `${baseUrl}/services/${slug}`,
+  const servicePages = services.map((service) => ({
+    url: `${baseUrl}${service.href}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.8,
