@@ -93,7 +93,7 @@ export default function HomePage() {
 
               {/* Description */}
               <p className="text-lg text-white/70 mb-8 max-w-xl mx-auto lg:mx-0">
-                You have enough on your plate. We handle the painting, repairs, cleaning, and curb appeal — so your home shows its best and you get the offers you deserve.
+                You have enough on your plate. We handle the painting, repairs, cleaning, and curb appeal — so your home shows its best and you get the offers you deserve. Your neighbors are watching; let&apos;s give them something to talk about.
               </p>
 
               {/* CTAs */}

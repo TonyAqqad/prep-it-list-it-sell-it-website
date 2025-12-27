@@ -8,6 +8,7 @@ export function StickyMobileCTA() {
         <div className="flex gap-3">
           <a
             href={`tel:${company.contact.phone.officeRaw}`}
+            aria-label={`Call Bryan at ${company.contact.phone.office}`}
             className="btn btn-primary flex-1 justify-center"
           >
             <Icon name="call" size="sm" />
@@ -15,6 +16,7 @@ export function StickyMobileCTA() {
           </a>
           <a
             href="/get-quote"
+            aria-label="Request a free quote"
             className="btn btn-secondary flex-1 justify-center"
           >
             <Icon name="edit_note" size="sm" />
