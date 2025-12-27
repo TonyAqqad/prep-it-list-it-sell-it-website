@@ -81,7 +81,7 @@ export default function RootLayout({
         />
         <LocalBusinessSchema />
       </head>
-      <body className={`${playfair.variable} ${sourceSerif.variable} antialiased min-h-screen`}>
+      <body className="antialiased min-h-screen">
         {/* Skip to content link for accessibility */}
         <a
           href="#main"
