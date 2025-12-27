@@ -17,9 +17,11 @@ function TrustIndicator({ icon, text }: TrustIndicatorProps) {
 
 export function TrustIndicators() {
   const indicators = [
-    { icon: "verified_user", text: "Licensed & Insured" },
+    ...(company.credentials.licensed && company.credentials.insured
+      ? [{ icon: "verified_user", text: "Licensed & Insured" }]
+      : []),
     { icon: "family_restroom", text: `Family-Owned Since ${company.founded}` },
-    { icon: "schedule", text: "Response in 1-24 Hours" },
+    { icon: "schedule", text: `Response in ${company.contact.responseTime}` },
   ];
 
   return (
