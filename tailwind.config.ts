@@ -57,9 +57,27 @@ const config: Config = {
           dark: "#0F1923",
         },
       },
+      spacing: {
+        'xs': '8px',
+        'sm': '13px',
+        'md': '21px',
+        'lg': '34px',
+        'xl': '55px',
+        '2xl': '89px',
+        '3xl': '144px',
+      },
+      fontSize: {
+        'micro': ['12px', { lineHeight: '1.4' }],
+        'small': ['14px', { lineHeight: '1.5' }],
+        'body': ['17px', { lineHeight: '1.6' }],
+        'lead': ['21px', { lineHeight: '1.5' }],
+        'title': ['34px', { lineHeight: '1.2' }],
+        'display': ['55px', { lineHeight: '1.15' }],
+        'hero': ['72px', { lineHeight: '1.1' }],
+      },
       fontFamily: {
         display: ["var(--font-playfair)", "Georgia", "serif"],
-        body: ["var(--font-inter)", "system-ui", "sans-serif"],
+        body: ["var(--font-source-serif)", "Georgia", "serif"],
       },
       boxShadow: {
         subtle: "0 2px 10px rgba(27, 40, 56, 0.08)",
