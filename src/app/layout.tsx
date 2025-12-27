@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Playfair_Display, Source_Serif_4 } from "next/font/google";
 import "@/styles/globals.css";
 import LocalBusinessSchema from "@/components/seo/LocalBusinessSchema";
 
@@ -7,14 +7,15 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
   display: "swap",
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["500", "600", "700", "800"],
 });
 
-const inter = Inter({
+const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-source-serif",
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "600"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -72,7 +73,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`dark ${playfair.variable} ${inter.variable}`}>
+    <html lang="en" className={`dark ${playfair.variable} ${sourceSerif.variable}`}>
       <head>
         <link
           rel="stylesheet"
@@ -80,7 +81,7 @@ export default function RootLayout({
         />
         <LocalBusinessSchema />
       </head>
-      <body className="min-h-screen">
+      <body className={`${playfair.variable} ${sourceSerif.variable} antialiased min-h-screen`}>
         {/* Skip to content link for accessibility */}
         <a
           href="#main"
