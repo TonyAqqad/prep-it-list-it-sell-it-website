@@ -3,6 +3,8 @@ import Image from "next/image";
 import { company } from "@/content/company";
 import { services, featuredServices } from "@/content/services";
 import { testimonials } from "@/content/testimonials";
+import { Icon, SectionDivider } from "@/components/ui";
+import { TrustIndicators, CTASection } from "@/components/sections";
 
 export default function HomePage() {
   return (
@@ -80,51 +82,33 @@ export default function HomePage() {
 
               {/* Headline */}
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-6 leading-tight">
-                Home Prep Services{" "}
-                <span className="text-gold-gradient">Made Easy</span>
+                The Small Fixes That Add{" "}
+                <span className="text-gold-gradient">Thousands to Your Sale Price</span>
               </h1>
 
               {/* Tagline */}
               <p className="text-xl sm:text-2xl text-gold font-display italic mb-6">
-                {company.tagline}
+                Small Jobs. Big Return.
               </p>
 
               {/* Description */}
               <p className="text-lg text-white/70 mb-8 max-w-xl mx-auto lg:mx-0">
-                We help homeowners and real estate professionals get market-ready fast.
-                Smart fixes, clean execution, and a smoother sale. One call does it all.
+                You have enough on your plate. We handle the painting, repairs, cleaning, and curb appeal — so your home shows its best and you get the offers you deserve.
               </p>
 
               {/* CTAs */}
               <div className="flex flex-wrap justify-center lg:justify-start gap-4 mb-8">
-                <a href="#contact" className="btn btn-primary text-lg px-8">
-                  <span className="material-symbols-outlined">calendar_month</span>
-                  Schedule Consultation
+                <a href={`tel:${company.contact.phone.officeRaw}`} className="btn btn-primary text-lg px-8">
+                  <Icon name="call" size="sm" />
+                  Call Bryan Now
                 </a>
-                <a
-                  href={`tel:${company.contact.phone.officeRaw}`}
-                  className="btn btn-outline text-lg px-8"
-                >
-                  <span className="material-symbols-outlined">call</span>
-                  {company.contact.phone.office}
+                <a href="/get-quote" className="btn btn-secondary text-lg px-8">
+                  Get YOUR Free Quote
                 </a>
               </div>
 
               {/* Trust indicators */}
-              <div className="flex flex-wrap justify-center lg:justify-start gap-6 text-sm text-white/60">
-                <div className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-gold text-xl">verified</span>
-                  <span>Licensed & Insured</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-gold text-xl">schedule</span>
-                  <span>Response in {company.contact.responseTime}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-gold text-xl">star</span>
-                  <span>5-Star Reviews</span>
-                </div>
-              </div>
+              <TrustIndicators />
             </div>
 
             {/* Hero Image / Logo Display */}
@@ -169,6 +153,8 @@ export default function HomePage() {
         </div>
       </section>
 
+      <SectionDivider />
+
       {/* ============================================
           VALUE PROPOSITION BAR
           ============================================ */}
@@ -192,6 +178,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <SectionDivider />
 
       {/* ============================================
           SERVICES SECTION
@@ -254,6 +242,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <SectionDivider />
 
       {/* ============================================
           HOW IT WORKS SECTION
@@ -322,6 +312,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <SectionDivider />
 
       {/* ============================================
           WHY TRUST US SECTION
@@ -396,6 +388,8 @@ export default function HomePage() {
         </div>
       </section>
 
+      <SectionDivider />
+
       {/* ============================================
           TESTIMONIALS SECTION
           ============================================ */}
@@ -452,6 +446,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <SectionDivider />
 
       {/* ============================================
           CTA / CONTACT SECTION
@@ -515,6 +511,15 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <SectionDivider />
+
+      {/* ============================================
+          CTA SECTION
+          ============================================ */}
+      <CTASection />
+
+      <SectionDivider />
 
       {/* ============================================
           FOOTER
@@ -609,30 +614,6 @@ export default function HomePage() {
           </div>
         </div>
       </footer>
-
-      {/* ============================================
-          STICKY MOBILE CTA
-          ============================================ */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden no-print pb-safe">
-        <div className="bg-navy/95 backdrop-blur-md border-t border-gold/20 px-4 py-3">
-          <div className="flex items-center gap-3">
-            <a
-              href={`tel:${company.contact.phone.officeRaw}`}
-              className="flex-1 btn btn-primary justify-center min-h-[48px]"
-            >
-              <span className="material-symbols-outlined">call</span>
-              <span>Call Now</span>
-            </a>
-            <a
-              href="#contact"
-              className="flex-1 btn btn-secondary justify-center min-h-[48px]"
-            >
-              <span className="material-symbols-outlined">mail</span>
-              <span>Get Quote</span>
-            </a>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }

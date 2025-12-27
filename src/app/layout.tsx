@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Source_Serif_4 } from "next/font/google";
 import "@/styles/globals.css";
 import LocalBusinessSchema from "@/components/seo/LocalBusinessSchema";
+import { StickyMobileCTA } from "@/components/sections";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -91,7 +92,10 @@ export default function RootLayout({
         </a>
 
         {/* Main content */}
-        <main id="main">{children}</main>
+        <main id="main" className="pb-20 md:pb-0">
+          {children}
+        </main>
+        <StickyMobileCTA />
       </body>
     </html>
   );
