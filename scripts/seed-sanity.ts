@@ -1,4 +1,7 @@
 // scripts/seed-sanity.ts
+import * as dotenv from "dotenv";
+dotenv.config({ path: ".env.local" });
+
 import { createClient } from "@sanity/client";
 import { company } from "../src/content/company";
 import { services } from "../src/content/services";
