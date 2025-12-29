@@ -40,10 +40,10 @@ npm run seed       # Seed Sanity CMS with content from src/content/
 
 ### Layout Components (Server-Side with Sanity Fetch)
 Shared layout in `src/components/layout/`:
-- `LayoutWrapper.tsx` — Server component that fetches layout data via `getLayoutData()` and passes to Header/Footer
-- `Header.tsx` — Fixed header with logo, nav, mobile menu trigger (client component, receives props, uses HashLink for hash navigation)
+- `LayoutWrapper.tsx` — Server component that fetches layout data via `getLayoutData()`, wraps Header and Footer, passes data as props. Used in root layout to handle all layout rendering
+- `Header.tsx` — Fixed header with logo, nav, mobile menu trigger (client component, receives props, uses HashLink for hash navigation). Mobile-optimized with reduced padding (px-3 sm:px-6, py-2 sm:py-3) and smaller logo (h-8 sm:h-10 md:h-12)
 - `Footer.tsx` — Company info, quick links, services, contact (server component, receives props)
-- `MobileMenu.tsx` — Slide-in mobile nav with backdrop, focus trap, escape handling (client component, uses HashLink)
+- `MobileMenu.tsx` — Slide-in mobile nav with backdrop, focus trap, escape handling (client component, uses HashLink for hash navigation). Hamburger button has visible gold background (bg-gold/10) for better mobile visibility
 
 **Data Fetching**: `src/lib/getLayoutData.ts` — Fetches siteSettings, contactInfo, navigation, footer, and services from Sanity with graceful fallback to TypeScript content files. Default navigation includes "Service Areas" link.
 
@@ -56,7 +56,7 @@ Shared layout in `src/components/layout/`:
 
 **Global Styles Architecture** (`globals.css`):
 - **CSS Variables**: Color tokens (navy/gold variants), shadows, transitions in `:root`
-- **Base Layer**: Smooth scrolling, safe area insets for mobile, custom selection, focus states, heading defaults
+- **Base Layer**: Smooth scrolling, horizontal overflow containment (html/body), safe area insets for mobile, custom selection, focus states, heading defaults
 - **Component Classes**:
   - `.card` / `.card-gold` — Card system with hover effects, gold glow, and radial gradient borders
   - `.btn` / `.btn-primary` — Button base with tap targets, slide animations, gold shadow
@@ -64,6 +64,7 @@ Shared layout in `src/components/layout/`:
   - `.gradient-navy`, `.gradient-gold` — Brand gradient backgrounds
   - `.pattern-overlay` — Subtle SVG pattern (gold dots at 3% opacity)
   - `.container-section` — Max-width container with responsive padding
+  - `.overflow-safe` — Overflow containment utility for page wrappers (overflow-x-hidden, max-width 100vw)
   - `.tap-target` — Enforces 44px minimum for accessibility
 
 ### SEO & Metadata
@@ -134,7 +135,8 @@ Loaded via `next/font` in `src/app/layout.tsx`:
 
 ### Frontend
 - App Router in `src/app/`, Server Components by default
-- Root layout (`src/app/layout.tsx`) renders `<html>` and `<body>`, includes LayoutWrapper, StickyMobileCTA, and skip link
+- Root layout (`src/app/layout.tsx`) renders `<html>` and `<body>`, includes LayoutWrapper (which handles Header/Footer), StickyMobileCTA, and skip link
+- Main content wrapper includes `overflow-x-hidden` class to prevent horizontal scroll issues on mobile
 - Nested layouts must NOT render html/body tags (root layout handles these)
 - `next/image` for images, `next/font` for fonts
 - Minimal client JS — avoid heavy animation libraries
@@ -170,12 +172,20 @@ Loaded via `next/font` in `src/app/layout.tsx`:
 
 ### UI Components
 
+**Card** (`src/components/ui/Card.tsx`):
+- Flexible card component with variant system
+- Variants: `dark` (navy with gold border), `light` (white background), `elevated` (with gold glow)
+- Padding options: `none`, `sm`, `md`, `lg` (default)
+- Includes overflow-hidden for proper content containment
+- Used throughout site for service cards, area cards, contact cards
+
 **LocationMap** (`src/components/ui/LocationMap.tsx`):
 - Google Maps embed component using `@next/third-parties/google` GoogleMapsEmbed
-- Props: `query` (address/place name), optional `height` (default 400px), `zoom` (default 12), `className`
+- Props: `query` (address/place name), optional `height` (default 400px), `zoom` (default 12), `className`, `showLink` (default true)
 - Mode: "place" with query-based location
 - Requires `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` environment variable
 - Graceful fallback when API key missing (shows gray placeholder)
+- Includes "Open in Google Maps" link below map (can be disabled via `showLink={false}`)
 - Used on contact page to show service area
 - Rounded corners with shadow-lg styling
 
@@ -241,9 +251,9 @@ const defaultNavLinks = [
 
 **Static Routes**:
 - `/` — Home page (hero, services, process, testimonials, CTA)
-- `/services` — Services listing/detail
-- `/service-areas` — Service areas page with hero (gradient, pattern, breadcrumbs, badge), neighborhoods grid using Card component (8 Santa Clarita Valley areas with ZIP codes), and CTASection. Areas include: Santa Clarita, Valencia, Saugus, Canyon Country, Newhall, Stevenson Ranch, Castaic, Agua Dulce. Responsive grid: 1 col mobile, 2 col sm, 3 col lg, 4 col xl
-- `/contact` — Contact page with phone/email cards, response time indicator, service area map (Google Maps via LocationMap component), and address link
+- `/services` — Services listing with standardized hero section and grid layout. Page wrapper includes `overflow-x-hidden` to prevent mobile horizontal scroll. Responsive decorative gold glow elements (w-48/h-48 mobile → w-96/h-96 desktop)
+- `/service-areas` — Service areas page with standardized hero section (gradient background, pattern overlay, gold glow, breadcrumbs, badge), neighborhoods grid using Card component (8 Santa Clarita Valley areas with ZIP codes), SectionDividers, and CTASection. Areas include: Santa Clarita, Valencia, Saugus, Canyon Country, Newhall, Stevenson Ranch, Castaic, Agua Dulce. Responsive grid: 1 col mobile, 2 col sm, 3 col lg, 4 col xl. Mobile-optimized with responsive typography and padding
+- `/contact` — Contact page with standardized hero, phone/email cards with hover effects, response time indicator, service area map (Google Maps via LocationMap component with "Open in Google Maps" link), and address link. Page wrapper includes `overflow-x-hidden`, responsive decorative elements. Mobile-responsive with proper tap targets
 - `/get-quote` — Quote request page
 - `/studio` — Sanity CMS Studio (embedded, noindex)
 
@@ -271,10 +281,27 @@ const defaultNavLinks = [
 ## Implementation Plans
 
 Recent implementation plans are stored in `docs/plans/`:
-- `2025-12-29-website-enhancements.md` — Hash link navigation fixes, Service Areas page, GHL form container, Google Maps integration, Sanity schema descriptions
-- `2025-12-29-service-areas-mobile-fixes.md` — Service Areas page standardization (shared components, mobile responsiveness, LocationMap Google Maps link)
+- `2025-12-29-website-enhancements.md` — Hash link navigation fixes, Service Areas page, GHL form container, Google Maps integration, Sanity schema descriptions (COMPLETED)
+- `2025-12-29-service-areas-mobile-fixes.md` — Service Areas page standardization (shared components, mobile responsiveness, LocationMap Google Maps link) (COMPLETED)
+- `2025-12-29-mobile-overflow-fixes.md` — Mobile horizontal overflow fixes and navigation visibility improvements (COMPLETED)
 
-Use `superpowers:executing-plans` skill when implementing these plans.
+**Completed Features** (commit b27a7ba):
+- HashLink component for cross-page hash navigation
+- Service Areas page with 8 Santa Clarita Valley neighborhoods
+- GHLFormContainer for GoHighLevel form embeds
+- LocationMap with Google Maps integration and "Open in Google Maps" link
+- Mobile-responsive design patterns across all pages
+- Standardized hero sections with gradient, pattern, breadcrumbs
+- Card component with proper mobile padding and responsive typography
+
+**Mobile Responsiveness Focus**:
+- Overflow containment: `overflow-x-hidden` on html, body, page wrappers (`<div className="relative overflow-x-hidden">`), and main content element
+- Responsive decorative elements: Gold glow elements scale down on mobile (w-48/h-48 mobile → w-96/h-96 desktop) across contact and services pages
+- Header mobile optimization: Reduced padding (px-3 sm:px-6, py-2 sm:py-3), smaller logo (h-8 sm:h-10 md:h-12)
+- Mobile menu: Uses max-w-[85vw] on small screens, hamburger button has visible gold background (bg-gold/10) for improved visibility
+- Sticky mobile CTA: Increased bottom padding (pb-24) to prevent content overlap with fixed CTA bar
+
+Use `superpowers:executing-plans` skill when implementing new plans.
 
 ## Open Questions (Confirm Before Final Copy)
 - Complete services list

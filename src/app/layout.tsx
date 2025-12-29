@@ -106,7 +106,7 @@ export default function RootLayout({
 
         <LayoutWrapper>
           {/* Main content */}
-          <main id="main" className="flex-1 pb-20 md:pb-0 relative z-0">
+          <main id="main" className="flex-1 pb-24 md:pb-0 relative z-0 overflow-x-hidden">
             {children}
           </main>
         </LayoutWrapper>

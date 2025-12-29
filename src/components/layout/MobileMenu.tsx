@@ -67,7 +67,7 @@ export default function MobileMenu({
       {/* Menu Panel */}
       <div
         ref={menuRef}
-        className="absolute inset-y-0 right-0 w-full max-w-sm bg-navy border-l border-gold/20 shadow-2xl animate-slide-in-right"
+        className="absolute inset-y-0 right-0 w-full max-w-[85vw] sm:max-w-sm bg-navy border-l border-gold/20 shadow-2xl animate-slide-in-right"
       >
         <div className="flex flex-col h-full p-6">
           {/* Header */}

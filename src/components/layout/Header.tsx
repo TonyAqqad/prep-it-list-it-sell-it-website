@@ -19,8 +19,8 @@ export default function Header({ navLinks, ctaButton, phone, phoneRaw }: HeaderP
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 no-print">
-        <div className="container-section py-4">
-          <div className="backdrop-blur-safe bg-navy/90 border border-gold/20 rounded-xl px-6 py-3 flex items-center justify-between shadow-elevated">
+        <div className="container-section py-2 sm:py-4">
+          <div className="backdrop-blur-safe bg-navy/90 border border-gold/20 rounded-xl px-3 sm:px-6 py-2 sm:py-3 flex items-center justify-between shadow-elevated">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity">
               <Image
@@ -28,7 +28,7 @@ export default function Header({ navLinks, ctaButton, phone, phoneRaw }: HeaderP
                 alt="Prep It List It Sell It"
                 width={180}
                 height={52}
-                className="h-10 sm:h-12 w-auto"
+                className="h-8 sm:h-10 md:h-12 w-auto"
                 priority
               />
             </Link>
@@ -62,7 +62,7 @@ export default function Header({ navLinks, ctaButton, phone, phoneRaw }: HeaderP
             {/* Mobile Menu Button */}
             <button
               type="button"
-              className="md:hidden min-h-[44px] min-w-[44px] flex items-center justify-center text-white"
+              className="md:hidden min-h-[44px] min-w-[44px] flex items-center justify-center text-white bg-gold/10 rounded-lg hover:bg-gold/20 transition-colors"
               onClick={() => setMobileMenuOpen(true)}
               aria-label="Open menu"
               aria-expanded={mobileMenuOpen}

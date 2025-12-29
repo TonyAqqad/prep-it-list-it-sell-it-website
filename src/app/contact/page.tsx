@@ -21,15 +21,15 @@ export default function ContactPage() {
   ];
 
   return (
-    <div className="relative">
+    <div className="relative overflow-x-hidden">
       {/* Hero Section */}
       <section className="relative pt-32 pb-16 bg-gradient-to-br from-navy via-navy-dark to-navy overflow-hidden">
         {/* Background pattern */}
         <div className="absolute inset-0 pattern-overlay opacity-50" />
 
-        {/* Gold accent glow */}
-        <div className="absolute top-1/4 right-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 left-0 w-64 h-64 bg-gold/5 rounded-full blur-3xl" />
+        {/* Gold accent glow - responsive sizes */}
+        <div className="absolute top-1/4 right-0 w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 bg-gold/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-0 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-gold/5 rounded-full blur-3xl" />
 
         <div className="relative z-10 container-section">
           <Breadcrumbs items={breadcrumbItems} />

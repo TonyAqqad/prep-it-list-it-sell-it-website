@@ -34,6 +34,8 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 
   /* Safe area insets for iPhone notch/home indicator */
@@ -49,6 +51,12 @@
   body {
     @apply bg-navy font-body text-white overflow-x-hidden relative;
     text-rendering: optimizeLegibility;
+  }
+
+  /* Overflow containment for page wrappers */
+  .overflow-safe {
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 
   /* Custom selection */
