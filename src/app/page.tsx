@@ -1,7 +1,6 @@
-import Link from "next/link";
 import Image from "next/image";
 import { company } from "@/content/company";
-import { services, featuredServices } from "@/content/services";
+import { services } from "@/content/services";
 import { testimonials } from "@/content/testimonials";
 import { Icon, SectionDivider } from "@/components/ui";
 import { TrustIndicators, CTASection } from "@/components/sections";
@@ -9,52 +8,6 @@ import { TrustIndicators, CTASection } from "@/components/sections";
 export default function HomePage() {
   return (
     <div className="relative">
-      {/* ============================================
-          HEADER NAVIGATION
-          ============================================ */}
-      <header className="fixed top-0 left-0 right-0 z-50 no-print">
-        <div className="container-section py-4">
-          <div className="backdrop-blur-safe bg-navy/90 border border-gold/20 rounded-xl px-6 py-3 flex items-center justify-between shadow-elevated">
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity">
-              <Image
-                src="/logo/2.png"
-                alt="Prep It List It Sell It"
-                width={180}
-                height={52}
-                className="h-10 sm:h-12 w-auto"
-                priority
-              />
-            </Link>
-
-            {/* Navigation */}
-            <nav aria-label="Main navigation" className="flex items-center gap-2 sm:gap-6">
-              <a
-                href="#services"
-                className="hidden md:flex min-h-[44px] items-center px-3 text-sm font-medium text-white/80 hover:text-gold transition-colors"
-              >
-                Services
-              </a>
-              <a
-                href="#process"
-                className="hidden md:flex min-h-[44px] items-center px-3 text-sm font-medium text-white/80 hover:text-gold transition-colors"
-              >
-                How It Works
-              </a>
-              <a
-                href="#testimonials"
-                className="hidden lg:flex min-h-[44px] items-center px-3 text-sm font-medium text-white/80 hover:text-gold transition-colors"
-              >
-                Reviews
-              </a>
-              <a href="#contact" className="btn btn-primary text-sm">
-                Get Free Quote
-              </a>
-            </nav>
-          </div>
-        </div>
-      </header>
-
       {/* ============================================
           HERO SECTION
           ============================================ */}
@@ -519,101 +472,6 @@ export default function HomePage() {
           ============================================ */}
       <CTASection />
 
-      <SectionDivider />
-
-      {/* ============================================
-          FOOTER
-          ============================================ */}
-      <footer className="bg-navy-dark py-16">
-        <div className="container-section">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-            {/* Company info */}
-            <div className="sm:col-span-2 lg:col-span-1">
-              <Image
-                src="/logo/2.png"
-                alt="Prep It List It Sell It"
-                width={200}
-                height={60}
-                className="h-12 w-auto mb-4"
-              />
-              <p className="text-white/60 text-sm mb-4">
-                {company.description}
-              </p>
-              <div className="space-y-1 text-sm text-white/50">
-                <div>{company.address.formatted}</div>
-                <div>Licensed & Insured</div>
-              </div>
-            </div>
-
-            {/* Quick links */}
-            <div>
-              <h3 className="text-white font-semibold mb-4">Quick Links</h3>
-              <ul className="space-y-2">
-                {["Services", "How It Works", "Reviews", "Contact"].map((link) => (
-                  <li key={link}>
-                    <a
-                      href={`#${link.toLowerCase().replace(/\s+/g, "-")}`}
-                      className="text-white/60 hover:text-gold transition-colors text-sm"
-                    >
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Services */}
-            <div>
-              <h3 className="text-white font-semibold mb-4">Services</h3>
-              <ul className="space-y-2">
-                {featuredServices.slice(0, 4).map((service) => (
-                  <li key={service.id}>
-                    <span className="text-white/60 text-sm">{service.shortTitle}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Contact */}
-            <div>
-              <h3 className="text-white font-semibold mb-4">Contact</h3>
-              <div className="space-y-2 text-sm">
-                <div>
-                  <a
-                    href={`tel:${company.contact.phone.officeRaw}`}
-                    className="text-white/60 hover:text-gold transition-colors"
-                  >
-                    Office: {company.contact.phone.office}
-                  </a>
-                </div>
-                <div>
-                  <a
-                    href={`tel:${company.contact.phone.directRaw}`}
-                    className="text-white/60 hover:text-gold transition-colors"
-                  >
-                    Direct: {company.contact.phone.direct}
-                  </a>
-                </div>
-                <div>
-                  <a
-                    href={`mailto:${company.contact.email}`}
-                    className="text-white/60 hover:text-gold transition-colors"
-                  >
-                    Email Us
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Copyright */}
-          <div className="pt-8 border-t border-white/10 text-center">
-            <p className="text-white/40 text-sm">
-              &copy; {new Date().getFullYear()} {company.name}. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
