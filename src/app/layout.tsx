@@ -49,11 +49,20 @@ export const metadata: Metadata = {
     title: "Prep It List It Sell It | Home Improvement Services Santa Clarita",
     description:
       "Family-owned home improvement and listing prep services in Santa Clarita Valley. Small jobs = Big return.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Prep It List It Sell It - Small Jobs. Big Return.",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Prep It List It Sell It | Home Improvement Services",
     description: "Family-owned listing prep services in Santa Clarita Valley.",
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
