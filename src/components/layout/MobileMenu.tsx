@@ -8,6 +8,7 @@ interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
   navLinks: { label: string; href: string }[];
+  ctaButton: { label: string; href: string };
   phone: string;
   phoneRaw: string;
 }
@@ -16,6 +17,7 @@ export default function MobileMenu({
   isOpen,
   onClose,
   navLinks,
+  ctaButton,
   phone,
   phoneRaw,
 }: MobileMenuProps) {
@@ -110,11 +112,11 @@ export default function MobileMenu({
           {/* CTA Section */}
           <div className="pt-6 border-t border-gold/20">
             <Link
-              href="/get-quote"
+              href={ctaButton.href}
               onClick={onClose}
               className="btn btn-primary w-full text-lg mb-4"
             >
-              Get Free Quote
+              {ctaButton.label}
             </Link>
             <a
               href={`tel:${phoneRaw}`}

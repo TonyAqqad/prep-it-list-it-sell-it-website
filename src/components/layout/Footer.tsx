@@ -1,16 +1,38 @@
 import Image from "next/image";
 import Link from "next/link";
-import { company } from "@/content/company";
-import { featuredServices } from "@/content/services";
 
-const quickLinks = [
-  { label: "Services", href: "/services" },
-  { label: "How It Works", href: "/#process" },
-  { label: "Reviews", href: "/#testimonials" },
-  { label: "Contact", href: "/contact" },
-];
+interface FooterProps {
+  companyName: string;
+  companyDescription: string;
+  credentials: { licensed: boolean; insured: boolean; bonded: boolean };
+  contactInfo: {
+    phoneOffice: string;
+    phoneOfficeRaw: string;
+    phoneDirect: string;
+    phoneDirectRaw: string;
+    email: string;
+    address: {
+      formatted: string;
+    };
+  };
+  quickLinks: { label: string; href: string }[];
+  services: {
+    _id: string;
+    title: string;
+    shortTitle: string;
+    slug: string;
+    href: string;
+  }[];
+}
 
-export default function Footer() {
+export default function Footer({
+  companyName,
+  companyDescription,
+  credentials,
+  contactInfo,
+  quickLinks,
+  services,
+}: FooterProps) {
   return (
     <footer className="bg-navy-dark py-16">
       <div className="container-section">
@@ -24,10 +46,10 @@ export default function Footer() {
               height={60}
               className="h-12 w-auto mb-4"
             />
-            <p className="text-white/60 text-sm mb-4">{company.description}</p>
+            <p className="text-white/60 text-sm mb-4">{companyDescription}</p>
             <div className="space-y-1 text-sm text-white/50">
-              <div>{company.address.formatted}</div>
-              {company.credentials.licensed && company.credentials.insured && (
+              <div>{contactInfo.address.formatted}</div>
+              {credentials.licensed && credentials.insured && (
                 <div>Licensed & Insured</div>
               )}
             </div>
@@ -54,8 +76,8 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-4">Services</h3>
             <ul className="space-y-2">
-              {featuredServices.slice(0, 4).map((service) => (
-                <li key={service.id}>
+              {services.slice(0, 4).map((service) => (
+                <li key={service._id}>
                   <Link
                     href={service.href}
                     className="text-white/60 hover:text-gold transition-colors text-sm"
@@ -73,23 +95,23 @@ export default function Footer() {
             <div className="space-y-2 text-sm">
               <div>
                 <a
-                  href={`tel:${company.contact.phone.officeRaw}`}
+                  href={`tel:${contactInfo.phoneOfficeRaw}`}
                   className="text-white/60 hover:text-gold transition-colors"
                 >
-                  Office: {company.contact.phone.office}
+                  Office: {contactInfo.phoneOffice}
                 </a>
               </div>
               <div>
                 <a
-                  href={`tel:${company.contact.phone.directRaw}`}
+                  href={`tel:${contactInfo.phoneDirectRaw}`}
                   className="text-white/60 hover:text-gold transition-colors"
                 >
-                  Direct: {company.contact.phone.direct}
+                  Direct: {contactInfo.phoneDirect}
                 </a>
               </div>
               <div>
                 <a
-                  href={`mailto:${company.contact.email}`}
+                  href={`mailto:${contactInfo.email}`}
                   className="text-white/60 hover:text-gold transition-colors"
                 >
                   Email Us
@@ -102,7 +124,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="pt-8 border-t border-white/10 text-center">
           <p className="text-white/40 text-sm">
-            &copy; {new Date().getFullYear()} {company.name}. All rights reserved.
+            &copy; {new Date().getFullYear()} {companyName}. All rights reserved.
           </p>
         </div>
       </div>

@@ -3,17 +3,16 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { company } from "@/content/company";
 import MobileMenu from "./MobileMenu";
 
-const navLinks = [
-  { label: "Services", href: "/services" },
-  { label: "How It Works", href: "/#process" },
-  { label: "Reviews", href: "/#testimonials" },
-  { label: "Contact", href: "/contact" },
-];
+interface HeaderProps {
+  navLinks: { label: string; href: string }[];
+  ctaButton: { label: string; href: string };
+  phone: string;
+  phoneRaw: string;
+}
 
-export default function Header() {
+export default function Header({ navLinks, ctaButton, phone, phoneRaw }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -44,8 +43,8 @@ export default function Header() {
                   {link.label}
                 </Link>
               ))}
-              <Link href="/get-quote" className="btn btn-primary text-sm">
-                Get Free Quote
+              <Link href={ctaButton.href} className="btn btn-primary text-sm">
+                {ctaButton.label}
               </Link>
             </nav>
 
@@ -69,8 +68,9 @@ export default function Header() {
         isOpen={mobileMenuOpen}
         onClose={() => setMobileMenuOpen(false)}
         navLinks={navLinks}
-        phone={company.contact.phone.office}
-        phoneRaw={company.contact.phone.officeRaw}
+        ctaButton={ctaButton}
+        phone={phone}
+        phoneRaw={phoneRaw}
       />
     </>
   );
