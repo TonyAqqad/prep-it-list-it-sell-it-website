@@ -135,18 +135,10 @@
     @apply bg-gradient-to-r from-gold-dark via-gold to-gold-light;
   }
 
-  /* Subtle pattern overlay */
+  /* Subtle pattern overlay - applies pattern via background image */
   .pattern-overlay {
-    position: relative;
-  }
-
-  .pattern-overlay::before {
-    content: "";
-    position: absolute;
-    inset: 0;
     background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4A74A' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     pointer-events: none;
-    z-index: 1;
   }
 
   /* Tap target minimum size (44px) */
@@ -314,6 +306,9 @@
     justify-content: center;
     gap: 21px;
     padding: 55px 0;
+    background-color: rgb(var(--color-navy));
+    position: relative;
+    z-index: 1;
   }
 
   .section-divider::before,

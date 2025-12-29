@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { HashLink } from "@/components/ui/HashLink";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -94,16 +95,29 @@ export default function MobileMenu({
             <ul className="space-y-2">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    onClick={onClose}
-                    className="flex items-center justify-between min-h-[52px] px-4 text-lg font-medium text-white hover:text-gold hover:bg-white/5 rounded-lg transition-colors"
-                  >
-                    <span>{link.label}</span>
-                    <span className="material-symbols-outlined text-gold/60">
-                      chevron_right
-                    </span>
-                  </Link>
+                  {link.href.startsWith("/#") ? (
+                    <HashLink
+                      href={link.href}
+                      onClick={onClose}
+                      className="flex items-center justify-between min-h-[52px] px-4 text-lg font-medium text-white hover:text-gold hover:bg-white/5 rounded-lg transition-colors"
+                    >
+                      <span>{link.label}</span>
+                      <span className="material-symbols-outlined text-gold/60">
+                        chevron_right
+                      </span>
+                    </HashLink>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      onClick={onClose}
+                      className="flex items-center justify-between min-h-[52px] px-4 text-lg font-medium text-white hover:text-gold hover:bg-white/5 rounded-lg transition-colors"
+                    >
+                      <span>{link.label}</span>
+                      <span className="material-symbols-outlined text-gold/60">
+                        chevron_right
+                      </span>
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

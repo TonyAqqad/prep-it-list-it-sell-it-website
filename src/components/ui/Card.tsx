@@ -8,9 +8,9 @@ interface CardProps {
 }
 
 const variantClasses: Record<CardVariant, string> = {
-  dark: "card bg-navy-light border border-gold/20",
-  light: "bg-white text-navy rounded-2xl",
-  elevated: "card card-gold",
+  dark: "card bg-navy-light border border-gold/20 overflow-hidden",
+  light: "bg-white text-navy rounded-2xl overflow-hidden",
+  elevated: "card card-gold overflow-hidden",
 };
 
 const paddingClasses = {

@@ -13,14 +13,14 @@ export default function HomePage() {
           ============================================ */}
       <section className="relative min-h-screen flex items-center overflow-hidden pt-24 pb-16">
         {/* Background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy-dark to-navy" />
+        <div className="absolute inset-0 z-0 bg-gradient-to-br from-navy via-navy-dark to-navy" />
 
         {/* Subtle pattern */}
-        <div className="absolute inset-0 pattern-overlay opacity-50" />
+        <div className="absolute inset-0 z-[1] pattern-overlay opacity-50" />
 
         {/* Gold accent glow */}
-        <div className="absolute top-1/4 right-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 left-0 w-64 h-64 bg-gold/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 right-0 z-[2] w-96 h-96 bg-gold/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-0 z-[2] w-64 h-64 bg-gold/5 rounded-full blur-3xl" />
 
         <div className="relative z-10 container-section">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">

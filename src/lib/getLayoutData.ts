@@ -49,6 +49,7 @@ interface SanityLayoutData {
 // Default nav links (fallback)
 const defaultNavLinks = [
   { label: "Services", href: "/services" },
+  { label: "Service Areas", href: "/service-areas" },
   { label: "How It Works", href: "/#process" },
   { label: "Reviews", href: "/#testimonials" },
   { label: "Contact", href: "/contact" },

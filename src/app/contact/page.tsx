@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { company } from "@/content/company";
 import { Breadcrumbs, SectionDivider, Icon, Card } from "@/components/ui";
+import { LocationMap } from "@/components/ui/LocationMap";
 import { CTASection } from "@/components/sections";
 
 export const metadata: Metadata = {
@@ -158,6 +159,16 @@ export default function ContactPage() {
                 {area.name}
               </span>
             ))}
+          </div>
+
+          {/* Map */}
+          <div className="mt-12 max-w-4xl mx-auto">
+            <LocationMap
+              query="Santa Clarita Valley, California"
+              height={350}
+              zoom={10}
+              className="border-2 border-gold/20"
+            />
           </div>
 
           {/* Address */}

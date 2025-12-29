@@ -11,9 +11,11 @@ export default function StudioLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // Don't wrap in html/body - the root layout handles that
+  // Use a full-height container for Sanity Studio
   return (
-    <html lang="en">
-      <body style={{ margin: 0 }}>{children}</body>
-    </html>
+    <div className="fixed inset-0 bg-white" style={{ margin: 0 }}>
+      {children}
+    </div>
   );
 }

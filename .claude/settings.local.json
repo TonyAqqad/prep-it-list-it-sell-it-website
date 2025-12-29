@@ -6,7 +6,11 @@
       "WebFetch(domain:api.unsplash.com)",
       "WebFetch(domain:unsplash.com)",
       "Bash(npm run build:*)",
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "WebSearch",
+      "Skill(auto-memory:sync)",
+      "Bash(git rev-parse:*)",
+      "Skill(superpowers:writing-plans)"
     ]
   }
 }

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import MobileMenu from "./MobileMenu";
+import { HashLink } from "@/components/ui/HashLink";
 
 interface HeaderProps {
   navLinks: { label: string; href: string }[];
@@ -34,15 +35,25 @@ export default function Header({ navLinks, ctaButton, phone, phoneRaw }: HeaderP
 
             {/* Desktop Navigation */}
             <nav aria-label="Main navigation" className="hidden md:flex items-center gap-2 lg:gap-6">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="min-h-[44px] flex items-center px-3 text-sm font-medium text-white/80 hover:text-gold transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) =>
+                link.href.startsWith("/#") ? (
+                  <HashLink
+                    key={link.href}
+                    href={link.href}
+                    className="min-h-[44px] flex items-center px-3 text-sm font-medium text-white/80 hover:text-gold transition-colors"
+                  >
+                    {link.label}
+                  </HashLink>
+                ) : (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="min-h-[44px] flex items-center px-3 text-sm font-medium text-white/80 hover:text-gold transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                )
+              )}
               <Link href={ctaButton.href} className="btn btn-primary text-sm">
                 {ctaButton.label}
               </Link>
