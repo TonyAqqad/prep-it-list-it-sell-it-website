@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Source_Serif_4 } from "next/font/google";
 import "@/styles/globals.css";
 import LocalBusinessSchema from "@/components/seo/LocalBusinessSchema";
+import { Header, Footer } from "@/components/layout";
 import { StickyMobileCTA } from "@/components/sections";
 
 const playfair = Playfair_Display({
@@ -82,7 +83,7 @@ export default function RootLayout({
         />
         <LocalBusinessSchema />
       </head>
-      <body className="antialiased min-h-screen">
+      <body className="antialiased min-h-screen flex flex-col">
         {/* Skip to content link for accessibility */}
         <a
           href="#main"
@@ -91,10 +92,14 @@ export default function RootLayout({
           Skip to content
         </a>
 
+        <Header />
+
         {/* Main content */}
-        <main id="main" className="pb-20 md:pb-0">
+        <main id="main" className="flex-1 pb-20 md:pb-0">
           {children}
         </main>
+
+        <Footer />
         <StickyMobileCTA />
       </body>
     </html>
